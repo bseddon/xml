@@ -4,7 +4,7 @@
  * QName class and factory functions.  This is ported from Arelle.
  *
  * @author Bill Seddon
- * @version 0.1.1
+ * @version 0.9
  * @Copyright (C) 2016 Lyquidity Solutions Limited
  *
  * This program is free software: you can redistribute it and/or modify
