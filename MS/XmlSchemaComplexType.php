@@ -1,7 +1,7 @@
 <?php
 
 /**
- * XPath 2.0 for PHP
+ * Part of the XML Schema library for PHP
  *  _      _ _ _ _
  * | |   _   _  __ _ _   _(_) __| (_) |_ _   _
  * | |  | | | |/ _` | | | | |/ _` | | __| | | |
@@ -10,8 +10,8 @@
  *   |___/    |_|    |___/
  *
  * @author Bill Seddon
- * @version 0.1.1
- * @Copyright (C) 2017 Lyquidity Solutions Limited
+ * @version 0.9
+ * @Copyright (C) 2018 Lyquidity Solutions Limited
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
