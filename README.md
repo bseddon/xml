@@ -10,12 +10,20 @@
 ## About the project
 
 PHP includes the DOM and SimpleXML features to read and manipulate XML documents.  But it does not provide a mechanism to
-parse schema documents and build a respository of type information.  This project provides a light-weight means to parse 
-schema files and make the type information in them available to an application.
+parse schema documents and build a respository of type information from XML schema documents (.xsd).  This project provides 
+a light-weight means to parse  schema files and make the type information in them available to an application.  
+
+Type information can be exported to and imported from JSON files to improve performance when schema documents are used regularly.
 
 This project is not a full implementation of the XML Schema specification supporting all the particles and components
 defined in the XML Schema specification.  Instead it generates a list of the elements, attributes and types defined
-by one or more schemas that can be accessed as collection of indexed arrays.
+by one or more schemas.  These lists can then be accessed as collection of indexed arrays.
+
+### Motivation
+
+This project is standalone but is part of the XBRL project.  XBRL makes extensive use of XML Schema documents to define 
+the elements, attributes and types used in its taxonomies.  Validation of these taxonomies cannot take place without 
+reference to the element, attribute and type information defined in the XML schema documents.
 
 ## License
 

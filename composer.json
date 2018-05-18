@@ -3,18 +3,12 @@
 	"description": "Reads XML Schema documents (.xsd) files and extracts type information for PHP",
 	"keywords": ["lyquidity", "xml", "schema"],
 	"type": "library",
-	"homepage": "https://github.com/lyquidity/xml",
+	"homepage": "https://github.com/bseddon/xml",
 	"license": "GPL version 3.0",
 	"authors": [
 		{
 			"name": "Bill Seddon",
 			"homepage": "https://github.com/orgs/lyquidity/people/bseddon"
-		}
-	],
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "file:///D:/GitHub/xbrlquery/core/"
 		}
 	],
 	"require": {
