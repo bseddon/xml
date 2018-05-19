@@ -1,4 +1,4 @@
-# XBRLQuery/core
+# XML Schema processor for PHP
 
 **Table of contents**
 * [About the project](#about-the-project)
@@ -24,6 +24,10 @@ by one or more schemas.  These lists can then be accessed as collection of index
 This project is standalone but is part of the XBRL project.  XBRL makes extensive use of XML Schema documents to define 
 the elements, attributes and types used in its taxonomies.  Validation of these taxonomies cannot take place without 
 reference to the element, attribute and type information defined in the XML schema documents.
+
+### Dependencies
+
+This project depends on [pear/log](https://github.com/pear/Log
 
 ## License
 
@@ -57,4 +61,12 @@ Or fork or download the repository.  The source can be found in the 'source' sub
 ## Getting started
 
 The examples folder includes illustrations of using the library to read schema type information and apply it to XML instant documents.
+
+Assuming you have installed the library using composer then this PHP application will run the test:
+
+```
+&lt;?php
+require_once __DIR__ . '/vendor/autoload.php';
+include __DIR__ . "/vendor/lyquidity/xml/examples/examples.php";
+```
 
