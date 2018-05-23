@@ -70,7 +70,7 @@ The examples folder includes illustrations of using the library to read schema t
 Assuming you have installed the library using composer then this PHP application will run the test:
 
 ```
-&lt;?php
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
 include __DIR__ . "/vendor/lyquidity/xml/examples/examples.php";
 ```
