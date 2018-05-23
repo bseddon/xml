@@ -59,9 +59,9 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 
 	/**
 	 * Create a constructor and fill it from a SimpleXMLElement if provided
-	 * @param SimpleXMLElement $element
+	 * @param SimpleXMLElement $namespaces
 	 */
-	public function __construct( $element = null )
+	public function __construct( $namespaces = null )
 	{
 		$this->nameTable = new XmlNameTable();
 
