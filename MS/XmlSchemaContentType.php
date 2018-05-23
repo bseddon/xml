@@ -30,29 +30,33 @@
 
 namespace lyquidity\xml\MS;
 
-//
-// Enumerations for the content model of the complex type. This represents the content
-// in the post-schema-validation information set (infoset).
-//
+/**
+ * Enumerations for the content model of the complex type. This represents the content
+ * in the post-schema-validation information set (infoset).
+ */
 class XmlSchemaContentType
 {
-	//
-	// Text-only content.
-	//
+	/**
+	 * Text-only content.
+	 * @var integer
+	 */
 	const TextOnly = 0;
 
-	//
-	// Empty content.
-	//
-	const Empty = 1;
+	/**
+	 * Empty content
+	 * @var integer
+	 */
+	const EmptyNode = 1;
 
-	//
-	// Element-only content.
-	//
+	/**
+	 * Element-only content.
+	 * @var integer
+	 */
 	const ElementOnly = 2;
 
-	//
-	// Mixed content.
-	//
+	/**
+	 * Mixed content
+	 * @var integer
+	 */
 	const Mixed = 3;
 }

@@ -37,7 +37,7 @@ class TypeCode
 {
 	/**
 	 * Generated a type code value for a variable
-	 * @param mixed $className
+	 * @param mixed $value
 	 * @return TypeCode
 	 */
 	public static function getTypeCodeFromObject( $value )
@@ -184,6 +184,9 @@ class TypeCode
 	const UNION = 20;
 }
 
+/**
+ * Unit tests
+ */
 function TestTypeCode()
 {
 	$typeCode = TypeCode::getTypeCode( 1 );

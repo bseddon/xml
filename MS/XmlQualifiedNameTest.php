@@ -50,9 +50,8 @@ use lyquidity\xml\QName;
  */
 class XmlQualifiedNameTest extends QName
 {
-	public static $CLASSNAME = "lyquidity\xml\MS\XmlQualifiedNameTest";
-
 	/**
+	 * Holds the value passed in to the constructor.  When true the test is negated
 	 * @var bool $exclude
 	 */
 	 private $exclude;

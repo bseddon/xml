@@ -105,7 +105,7 @@ abstract class XmlSchemaDatatype
 	 *
 	 * @param object $value  The input value to convert to the specified type.
 	 * @param Type $targetType The target type to convert the input value to.
-	 * @param IXmlNamespaceResolver $namespaceResolver:
+	 * @param IXmlNamespaceResolver $namespaceResolver
 	 *     An IXmlNamespaceResolver used for resolving namespace prefixes. This
 	 *     is only of use if the XmlSchemaDatatype represents the xs:QName
 	 *     type or a type derived from it.
@@ -126,7 +126,7 @@ abstract class XmlSchemaDatatype
 	 * NOT USED
 	 * The XmlSchemaDatatype.IsDerivedFrom(XmlSchemaDatatype) method always returns false.
 	 *
-	 * @param XmlSchemaDatatype $datatype:
+	 * @param XmlSchemaDatatype $datatype
 	 * @return bool Always returns false.
 	 */
 	public function IsDerivedFrom( $datatype )

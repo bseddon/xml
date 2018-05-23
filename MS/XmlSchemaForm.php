@@ -31,7 +31,7 @@
 namespace lyquidity\xml\MS;
 
 /**
- *
+ * Defines a list of schema form values
  */
 class XmlSchemaForm
 {

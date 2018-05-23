@@ -34,6 +34,9 @@ use lyquidity\xml\schema\SchemaTypes;
 use lyquidity\xml\exceptions\ArgumentOutOfRangeException;
 use lyquidity\xml\exceptions\NotSupportedException;
 
+/**
+ * Provides the functionality of a namespace manager that allows a caller to add an lookup namespaces
+ */
 class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 {
 	/**
@@ -48,13 +51,17 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 	 */
 	private $defaultNamespace = "";
 
+	/**
+	 * Reference to the name table instance
+	 * @var XmlNameTable
+	 */
 	private  $nameTable = null;
 
 	/**
 	 * Create a constructor and fill it from a SimpleXMLElement if provided
 	 * @param SimpleXMLElement $element
 	 */
-	public function __construct( $namespaces = null )
+	public function __construct( $element = null )
 	{
 		$this->nameTable = new XmlNameTable();
 
@@ -76,6 +83,10 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 		}
 	}
 
+	/**
+	 * Constructor that allows the manager to be filled with namespaces from the existing SchemaTypes global instance
+	 * @return \lyquidity\xml\MS\XmlNamespaceManager
+	 */
 	public static function fromSchemaTypes()
 	{
 		return new XmlNamespaceManager( SchemaTypes::getInstance()->getProcessedSchemas() );
@@ -105,7 +116,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 	/**
 	 * Adds a namespace to the existing collection
 	 * @param string $prefix
-	 * @param string $namepace
+	 * @param string $namespace
 	 */
 	public function addNamespace( $prefix, $namespace )
 	{
@@ -187,7 +198,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 	}
 
 	/**
-	 *
+	 * Get the nametable instance from the manager
 	 * @return XmlNameTable
 	 */
 	public function getNameTable()
@@ -263,6 +274,9 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 
 }
 
+/**
+ * Unit tests
+ */
 function Test()
 {
 	$xml = __DIR__ . "/../../tests/instance documents/uk-ae/Prod223_1329_04607019_20150131.xbrl";

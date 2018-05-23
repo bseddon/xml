@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\interfaces;
 
+/**
+ * This interface allows a class to declare that it supports the getSchemaType and getValue functions
+ */
 interface IXmlSchemaType
 {
 	/**

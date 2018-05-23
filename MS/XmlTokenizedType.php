@@ -36,7 +36,6 @@ use lyquidity\xml\schema\SchemaTypes;
  * Represents the XML type for the string. This allows the string to be read as
  * a particular XML type; for example a CDATA section type.
  */
-
 class XmlTokenizedType
 {
 	/**
@@ -93,7 +92,7 @@ class XmlTokenizedType
 	const None = 12;
 
 	/**
-	 *
+	 * Get a type code for an Xml type name
 	 * @param string $type An Xml type
 	 * @return XmlTokenizedType value
 	 */
@@ -131,8 +130,15 @@ class XmlTokenizedType
 
 	}
 
+	/**
+	 * A map of type names to codes
+	 * @var array
+	 */
 	private static $typeToCodeMap = array();
 
+	/**
+	 * Static constructor
+	 */
 	static function __static()
 	{
 		XmlTokenizedType::$typeToCodeMap = array(

@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\MS;
 
+/**
+ * Allows a class to declare that it supports being a namespace resolver
+ */
 interface IXmlNamespaceResolver
 {
 	/**

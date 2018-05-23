@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\MS;
 
+/**
+ * Implements a repository namespaces
+ */
 class XmlNameTable
 {
 	/**
@@ -53,14 +56,14 @@ class XmlNameTable
 	{}
 
 	/**
-	 *
+	 * Not implemented
 	 * @param array $name
 	 */
 	public function Get( $name )
 	{}
 
 	/**
-	 *
+	 * Not implemented
 	 * @param array $chars
 	 * @param int $offset
 	 * @param int $length

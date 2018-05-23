@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\xpath;
 
+/**
+ * Provides a list of values that define the possible scope of a namespace
+ */
 class XPathNamespaceScope
 {
 	/**

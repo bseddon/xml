@@ -30,51 +30,74 @@
 
 namespace lyquidity\xml\xpath;
 
+/**
+ * Interface allows a class to declare that is supports being an XPathItem
+ */
 interface XPathItem
 {
 	/**
+	 * True if the item is a node (vs a value)
 	 * @return bool
 	 */
 	function getIsNode();
+
 	/**
+	 * Returns the item value coerced to a specific type
 	 * @return object
 	 */
 	function getTypedValue();
+
 	/**
+	 * returns the raw value
 	 * @return string
 	 */
 	function getValue();
+
 	/**
+	 * Returns the value coerced to a boolean
 	 * @return bool
 	 */
 	function getValueAsBoolean();
+
 	/**
+	 * Returns the value coerced to a datetime
 	 * @return DateTime
 	 */
 	function getValueAsDateTime();
+
 	/**
+	 * Returns the value coerced to a double
 	 * @return double
 	 */
 	function getValueAsDouble();
+
 	/**
+	 * Returns the value coerced to an integer
 	 * @return int
 	 */
 	function getValueAsInt();
+
 	/**
+	 * Returns the value coerced to a long
 	 * @return long
 	 */
 	function getValueAsLong();
+
 	/**
+	 * Returns the Xml type of the value
 	 * @return Type $ValueType
 	 */
 	function getValueType();
+
 	/**
 	 * When overridden in a derived class, gets the XmlSchemaType for the item.
 	 *
 	 * @return XmlSchemaType The XmlSchemaType for the item.
 	 */
 	function getSchemaType();
+
 	/**
+	 * Return the value as a specific type defined in $returnType
 	 * @param Type $returnType
 	 * @param IXmlNamespaceResolver $nsResolver
 	 *

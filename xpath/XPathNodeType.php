@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\xpath;
 
+/**
+ * Defines the set of values for the type of XML nodes that can exist
+ */
 class XPathNodeType
 {
 	const Root = 0;

@@ -5,7 +5,7 @@
  *
  * @author Bill Seddon
  * @version 0.9
- * @Copyright (C) 2016 Lyquidity Solutions Limited
+ * @Copyright (C) 2018 Lyquidity Solutions Limited
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -145,6 +145,9 @@ class SchemaTypes
 	 */
 	public $log = null;
 
+	/**
+	 * Static constructor
+	 */
 	public static function __static()
 	{
 		SchemaTypes::$nameStartChar = "[:_\.\p{Ll}\p{Lu}\p{Lt}\p{Lo}]";
@@ -356,6 +359,9 @@ class SchemaTypes
 		return self::$instance;
 	}
 
+	/**
+	 * Default constructor
+	 */
 	public function __construct()
 	{
 		// Default logger
@@ -368,7 +374,7 @@ class SchemaTypes
 	}
 
 	/**
-	 *
+	 * The prefix is replaced with its namespace
 	 * @param string $qname
 	 */
 	public function normalizePrefix( $qname )
@@ -413,6 +419,13 @@ class SchemaTypes
 		}
 	}
 
+	/**
+	 * Add an entry to the global attributes list
+	 * @param string $prefix
+	 * @param string $name
+	 * @param string $parentType (optional default: "xs:anySimpleType")
+	 * @return boolean|mixed
+	 */
 	public function AddAttribute( $prefix, $name, $parentType = "xs:anySimpleType" )
 	{
 		$attribute = array();
@@ -502,6 +515,7 @@ class SchemaTypes
 	}
 
 	/**
+	 * Returns a list of the schema that have been processed and types collected
 	 * @return array An array of namespaces indexed by prefix
 	 */
 	public function getProcessedSchemas()
@@ -660,7 +674,7 @@ class SchemaTypes
 
 	/**
 	 * Get all the types associated with a union type
-	 * @param QName|string $qame
+	 * @param QName|string $qname
 	 * @return array
 	 */
 	public function getSimpleTypesFromUnion( $qname )
@@ -685,7 +699,7 @@ class SchemaTypes
 
 	/**
 	 * Returns true if the type is union
-	 * @param QName|string $qame
+	 * @param QName|string $qname
 	 * @return bool
 	 */
 	public function isUnionType( $qname )

@@ -72,7 +72,7 @@ interface IConvertable
 	 * Converts the value of this instance to an equivalent System.Decimal number using
 	 * the specified culture-specific formatting information.
 	 *
-	 * @param IFormatProvider $provide An implementation that supplies culture-specific formatting information.
+	 * @param IFormatProvider $provider An implementation that supplies culture-specific formatting information.
 	 * @return Decimal A Decimal number equivalent to the value of this instance.
 	 */
 	function ToDecimal( $provider );
@@ -91,6 +91,6 @@ interface IConvertable
 	 * @param IFormatProvider $provider An interface implementation that supplies culture-specific formatting information.
 	 * @return ushort An 16-bit unsigned integer equivalent to the value of this instance.
 	 */
-	function Toint( $provider );
+	function ToInt( $provider );
 
 }

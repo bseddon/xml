@@ -31,11 +31,12 @@
 namespace lyquidity\xml\xpath;
 
 /**
- *
+ * Interface allows a class to declare that it supports the CreateNavigator function
  */
 interface IXPathNavigable
 {
 	/**
+	 * CreateNavigator
 	 * @return XPathNavigator
 	 */
 	public function CreateNavigator();

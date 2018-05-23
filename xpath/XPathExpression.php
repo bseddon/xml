@@ -1,7 +1,7 @@
 <?php
 
 /**
- * XPath 2.0 for PHP
+ * Part of the XML for PHP library
  *  _                      _     _ _ _
  * | |   _   _  __ _ _   _(_) __| (_) |_ _   _
  * | |  | | | |/ _` | | | | |/ _` | | __| | | |
@@ -30,6 +30,9 @@
 
 namespace lyquidity\XPath2;
 
+/**
+ * Defines a set of core functions for an XPath expression evaluator
+ */
 abstract class XPathExpression
 {
 	/**

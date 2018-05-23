@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\MS;
 
+/**
+ * A set of value representing possible derivation methods
+ */
 class XmlSchemaDerivationMethod
 {
 	/**

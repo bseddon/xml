@@ -29,21 +29,22 @@
 
 namespace lyquidity\xml\interfaces;
 
-//
-// Exposes a method that compares two objects.
-//
+/**
+ * Defines an interface that allows a class to declare is implements the compare function
+ */
 interface IComparer
 {
-	//
-	// Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
-	//
-	// @param object $x The first object to compare.
-	// @param object $y The second object to compare.
-	// @return int  A signed integer that indicates the relative values of x and y, as shown in the
-	//              following table.Value Meaning Less than zero x is less than y. Zero x equals y.
-	//              Greater than zero x is greater than y.
-	//
-	// @throws ArgumentException 	Neither x nor y implements the System.IComparable interface.-or- x and y are
-	//    							of different types and neither one can handle comparisons with the other.
+	/**
+	 * Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
+	 *
+	 * @param object $x The first object to compare.
+	 * @param object $y The second object to compare.
+	 * @return int  A signed integer that indicates the relative values of x and y, as shown in the
+	 *              following table.Value Meaning Less than zero x is less than y. Zero x equals y.
+	 *              Greater than zero x is greater than y.
+	 *
+	 * @throws ArgumentException 	Neither x nor y implements the System.IComparable interface.-or- x and y are
+	 *    							of different types and neither one can handle comparisons with the other.
+	 */
 	function Compare( $x, $y );
 }

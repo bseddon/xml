@@ -38,7 +38,6 @@ namespace lyquidity\xml\MS;
  */
 class XmlSchemaSimpleType extends XmlSchemaType
 {
-	public static $CLASSNAME = "lyquidity\xml\MS\XmlSchemaSimpleType";
 	/**
 	 * Initializes a new instance of the System.Xml.Schema.XmlSchemaSimpleType class.
 	 */

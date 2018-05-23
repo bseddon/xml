@@ -37,6 +37,7 @@ use lyquidity\xml\xpath\XPathNavigator;
 class XPathNodeIterator // extends XPath2NodeIterator
 {
 	/**
+	 * nav
 	 * @var XPathNavigator $nav
 	 */
 	private $nav;

@@ -38,8 +38,6 @@ use lyquidity\xml\exceptions\NotSupportedException;
  */
 class XmlSchemaType extends XmlSchemaAnnotated
 {
-	public static $CLASSNAME = "lyquidity\xml\MS\XmlSchemaType";
-
 	/**
 	 * Initializes a new instance of the XmlSchemaType class.
 	 */
@@ -202,7 +200,7 @@ class XmlSchemaType extends XmlSchemaAnnotated
 	 *
 	 * @param XmlSchemaType derivedType: The derived XmlSchemaType to test.
 	 * @param baseType The base XmlSchemaType to test the derived XmlSchemaTypeagainst.
-	 * @except One of the XmlSchemaDerivationMethod values representing a
+	 * @param XmlSchemaDerivationMethod $except One of the XmlSchemaDerivationMethod values representing a
 	 *         type derivation method to exclude from testing.
 	 * @return bool true if the derived type is derived from the base type; otherwise, false.
 	 */

@@ -50,7 +50,7 @@ class XmlSchemaDatatypeVariety
 
 	/**
 	 * Return the constant name corresponding to the $tokenValue
-	 * @param int $tokenValue
+	 * @param int $varietyValue
 	 * @return string
 	 */
 	public static function getVarietyName( $varietyValue )

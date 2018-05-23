@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\MS;
 
+/**
+ * Class defines cardinality values 1, ?, +, *
+ */
 class XmlTypeCardinality
 {
 	const One = 1;

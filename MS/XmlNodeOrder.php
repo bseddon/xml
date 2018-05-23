@@ -30,6 +30,9 @@
 
 namespace lyquidity\xml\MS;
 
+/**
+ * Defines a set of values that can be used to provide information about the relative position of two nodes
+ */
 class XmlNodeOrder
 {
 	const Before = 0;
@@ -37,6 +40,11 @@ class XmlNodeOrder
 	const Same = 2;
 	const Unknown = 3;
 
+	/**
+	 * Returns a string version of the value
+	 * @param XmlNodeOrder $nodeOrder
+	 * @return string
+	 */
 	public static function toString( $nodeOrder )
 	{
 		// $oClass = new \ReflectionClass( "\lyquidity\XPath2\Token" );

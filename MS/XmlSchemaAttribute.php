@@ -54,7 +54,7 @@ class XmlSchemaAttribute extends XmlSchemaAnnotated
 	 */
 	public $AttributeSchemaType;
 
-	/*
+	/**
 	 * Gets or sets the default value for the attribute.
 	 *
 	 * @var string $DefaultValue The default value for the attribute. The default is a null reference.Optional.

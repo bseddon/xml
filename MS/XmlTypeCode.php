@@ -285,7 +285,7 @@ class XmlTypeCode
 	const UNION = 60;
 
 	/**
-	 *
+	 * Get a type code for an XML type name
 	 * @param string $xmlType An Xml type
 	 * @return XmlTypeCode value
 	 */
@@ -334,9 +334,20 @@ class XmlTypeCode
 			: false;
 	}
 
+	/**
+	 * Map variable set in static constructor
+	 * @var array
+	 */
 	private static $typeToCodeMap = array();
+	/**
+	 * Map variable set in static constructor
+	 * @var array
+	 */
 	private static $codeToTypeMap = array();
 
+	/**
+	 * Static constructor
+	 */
 	static function __static()
 	{
 		XmlTypeCode::$typeToCodeMap = array(

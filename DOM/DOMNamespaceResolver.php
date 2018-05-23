@@ -55,7 +55,7 @@ trait DOMNamespaceResolver
 	 * Not used
 	 * Gets the namespace URI for the specified prefix.
 	 *
-	 * @param string $prefix: The prefix whose namespace URI you want to resolve. To match the default namespace, pass Empty.
+	 * @param string $prefix The prefix whose namespace URI you want to resolve. To match the default namespace, pass Empty.
 	 *
 	 * @return	A string that contains the namespace URI assigned to the namespace prefix
 	 *     		specified; null if no namespace URI is assigned to the prefix specified. The
