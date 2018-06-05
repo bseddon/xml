@@ -63,13 +63,13 @@ function autoload( $className )
 	}
 
 	if (
-		strpos( $className, __NAMESPACE__ . '\MS' ) !== false ||
-		strpos( $className, __NAMESPACE__ . '\xpath' ) !== false ||
-		strpos( $className, __NAMESPACE__ . '\DOM' ) !== false ||
-		strpos( $className, __NAMESPACE__ . '\interfaces' ) !== false
+		strpos( $className, __NAMESPACE__ . '\\MS' ) !== false ||
+		strpos( $className, __NAMESPACE__ . '\\xpath' ) !== false ||
+		strpos( $className, __NAMESPACE__ . '\\DOM' ) !== false ||
+		strpos( $className, __NAMESPACE__ . '\\interfaces' ) !== false
 	)
 	{
-		$path = str_replace( "lyquidity\xml", __DIR__,  $className ) . ".php";
+		$path = str_replace( '\\', DIRECTORY_SEPARATOR, str_replace( "lyquidity\xml", __DIR__,  $className ) . ".php" );
 		if ( file_exists( $path ) )
 		{
 			require_once $path;
