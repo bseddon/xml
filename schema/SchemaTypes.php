@@ -275,12 +275,14 @@ class SchemaTypes
 			$path = $source . "/" . $target;
 
 		// Process the components
+		// BMS 2018-06-06 By ignoring a leading slash the effect is to create relative paths on linux
+		//				  However, its been done to handle http://xxx sources.  But this is not necessary (see below)
 		$parts = explode( '/', $path );
 		$safe = array();
 		foreach ( $parts as $idx => $part )
 		{
-			if ( empty( $part ) || ( '.' === $part ) )
-			// if ( '.' === $part )
+			// if ( empty( $part ) || ( '.' === $part ) )
+			if ( '.' === $part )
 			{
 				continue;
 			}
@@ -294,6 +296,9 @@ class SchemaTypes
 				$safe[] = $part;
 			}
 		}
+
+		// BMS 2108-06-06 See above
+		return implode( '/', $safe );
 
 		// Return the "clean" path
 		return $sourceIsUrl || $targetIsUrl
