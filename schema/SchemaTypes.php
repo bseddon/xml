@@ -253,6 +253,20 @@ class SchemaTypes
 		$target = urldecode( $target );
 
 		$source = str_replace( '\\', '/', $source );
+			// Remove any // instances as they confuse the path normalizer but take care to
+		// not to remove ://
+		$offset = 0;
+		while ( true )
+		{
+			$pos = strpos( $source, "//", $offset );
+			if ( $pos === false ) break;
+			$offset = $pos + 2;
+			// Ignore :// (eg https://)
+			if ( $pos > 0 && $source[ $pos-1 ] == ":" ) continue;
+			$source = str_replace( "//", "/", $source );
+			$offset--;
+		}
+
 		$source = pathinfo( $source, PATHINFO_EXTENSION ) === ""
 			? $source
 			: pathinfo( $source, PATHINFO_DIRNAME );
