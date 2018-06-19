@@ -403,4 +403,24 @@ function importTypesForDocument( $doc )
 	return $types;
 }
 
+/**
+ * Examines the content to determine if the content represent an XML document
+ * @param string $content
+ * @param bool $throwException
+ * @return bool
+ * @throws \Exception
+ */
+function isXml( $content, $throwException = true )
+{
+	// Use strpos because the xml document might start with comments
+	if ( empty( $content ) || strpos( $content, "<?xml" ) === false )
+	{
+		if ( ! $throwException ) return false;
+		throw new \Exception( __( "The file does not contain a valid XML document", 'xbrl_validate' ) );
+	}
+
+	return true;
+}
+
+
 ?>
