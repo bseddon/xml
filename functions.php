@@ -415,6 +415,10 @@ function isXml( $content, $throwException = true )
 	// Use strpos because the xml document might start with comments
 	if ( empty( $content ) || strpos( $content, "<?xml" ) === false )
 	{
+		$previous = libxml_use_internal_errors(true);
+		$xml = \simplexml_load_string( $content );
+		libxml_use_internal_errors( $previous );
+		if ( $xml !== false ) return $xml;
 		if ( ! $throwException ) return false;
 		throw new \Exception( __( "The file does not contain a valid XML document", 'xbrl_validate' ) );
 	}
