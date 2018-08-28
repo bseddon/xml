@@ -2155,6 +2155,34 @@ class SchemaTypes
 		$this->attributeGroups	=& $types['attributeGroups'];
 		$this->elements			=& $types['elements'];
 		$this->processedSchemas	=& $types['processedSchemas'];
+		if ( isset( $types['typeIds'] ) )
+		{
+			$this->typeIds		=& $types['typeIds'];
+		}
+
+		// Prevent re-loading base types
+		$this->baseTypesLoaded = true;
+
+		return true;
+	}
+
+	/**
+	 * Merge types from an array
+	 *
+	 * @param array $types
+	 * @return bool
+	 */
+	public function mergeTypes( $types )
+	{
+		$this->types			= array_merge( $this->types, $types['types'] );
+		$this->attributes		= array_merge( $this->attributes, $types['attributes'] );
+		$this->attributeGroups	= array_merge( $this->attributeGroups, $types['attributeGroups'] );
+		$this->elements			= array_merge( $this->elements, $types['elements'] );
+		$this->processedSchemas	= array_merge( $this->processedSchemas, $types['processedSchemas'] );
+		if ( isset( $types['typeIds'] ) )
+		{
+			$this->typeIds		= array_merge( $this->typeIds, $types['typeIds'] );
+		}
 
 		// Prevent re-loading base types
 		$this->baseTypesLoaded = true;
@@ -2174,6 +2202,7 @@ class SchemaTypes
 			'attributeGroups' => &$this->attributeGroups,
 			'elements' => &$this->elements,
 			'processedSchemas' => &$this->processedSchemas,
+			'typeIds' => &$this->typeIds,
 		);
 	}
 
