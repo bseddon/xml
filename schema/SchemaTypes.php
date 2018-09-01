@@ -1514,7 +1514,7 @@ class SchemaTypes
 	 * @param array $candidates An array of possible candidate types
 	 * @return bool
 	 */
-	public function resolvesToBaseType( $type, $candidates )
+	public function resolvesToBaseType( $type, $candidates, $allowUnion = true )
 	{
 		// Check the potential candidates are valid
 		if ( ! is_array( $candidates ) || ! count( $candidates ) ) return false;
@@ -1539,12 +1539,13 @@ class SchemaTypes
 		if ( isset( $t['parent'] ) )
 		{
 			// There are so repeat the test with the ancestor element
-			return $this->resolvesToBaseType( $t['parent'], $candidates );
+			return $this->resolvesToBaseType( $t['parent'], $candidates, $allowUnion );
 		}
 		else if ( isset( $t['types'] ) && isset( $t['class'] ) && $t['class'] == "simple" )
 		{
 			// The v-equal test V-20 could do with this returning false
-			return true;
+			// BMS 2018-09-01 Changed to allow the caller control (at least until a better option is determined)
+			return $allowUnion;
 			// // It may be necessary to consider types if $t is defined as a union such as xbrli:dateTimeItemType
 			// foreach ( $t['types'] as $parentType )
 			// {
