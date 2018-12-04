@@ -1420,7 +1420,17 @@ class SchemaTypes
 
 			case 'enumeration':
 
-				$content['values'][] = (string) $node->attributes()->value;
+				$attribs = $node->attributes();
+				$enum = array( 'value' => (string) $attribs->value );
+				if ( property_exists( $attribs, 'id' ) )
+				{
+					$enum['id'] = (string)$attribs->id;
+					$name = \XBRL::GUID();
+					$this->typeIds[ $enum['id'] ] = array( 'name' => $name, 'istype' => true );
+					$this->AddSimpleType( $prefix, $name );
+				}
+
+				$content['values'][] = $enum;
 				break;
 
 			case 'pattern':
