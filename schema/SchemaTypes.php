@@ -1439,6 +1439,18 @@ class SchemaTypes
 
 				break;
 
+			case 'maxInclusive':
+
+				$content['maxInclusive'] = (string) $node->attributes()->value;
+
+				break;
+
+			case 'minInclusive':
+
+				$content['minInclusive'] = (string) $node->attributes()->value;
+
+				break;
+
 			default:
 
 				$this->log->info( "Have not used $key" );
