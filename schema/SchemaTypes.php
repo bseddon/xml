@@ -973,7 +973,7 @@ class SchemaTypes
 			case 'attribute':
 
 				$content = $this->processAttribute( $node, $prefix );
-				if ( $content === false ) continue;
+				if ( $content === false ) break;
 				$this->attributes[ "$prefix:{$content['name']}" ] = $content;
 				if ( isset( $this->types[ "$prefix:{$content['name']}" ] ) ) break;
 				$parent = is_array( $content['types'][0] )
@@ -1187,7 +1187,7 @@ class SchemaTypes
 
 			case 'attributeGroup':
 
-				if ( ! property_exists( $node->attributes(), 'ref' ) ) continue;
+				if ( ! property_exists( $node->attributes(), 'ref' ) ) break;
 				if ( ! isset( $content['attributeGroups'] ) ) $content['attributeGroups'] = array();
 
 				$ref = (string) $node->attributes()->ref;
