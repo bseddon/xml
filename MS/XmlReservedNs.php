@@ -77,7 +77,7 @@ class XmlReservedNs
 	const xQueryFunc = "http://www.w3.org/2005/xpath-functions";
 
 	/**
-	 * @var string $NsXQueryFunc = "http://www.w3.org/2003/11/xpath-operators"
+	 * @var string $NsXQueryOp = "http://www.w3.org/2003/11/xpath-operators"
 	 */
 	const xQueryOp = "http://www.w3.org/2003/11/xpath-operators";
 
@@ -106,6 +106,20 @@ class XmlReservedNs
 	 */
 	const collationCodepoint = "http://www.w3.org/2005/xpath-functions/collation/codepoint";
 
+	/**
+	 * @var string "http://www.w3.org/2005/xpath-functions/math"
+	 */
+	const xQueryMath = "http://www.w3.org/2005/xpath-functions/math";
+
+	/**
+	 * @var string "http://www.w3.org/2005/xpath-functions/map"
+	 */
+	const xQueryMap = "http://www.w3.org/2005/xpath-functions/map";
+
+	/**
+	 * @var string "http://www.w3.org/2005/xpath-functions/array"
+	 */
+	const xQueryArray = "http://www.w3.org/2005/xpath-functions/array";
 }
 
 
