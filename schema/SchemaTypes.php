@@ -976,9 +976,20 @@ class SchemaTypes
 				if ( $content === false ) break;
 				$this->attributes[ "$prefix:{$content['name']}" ] = $content;
 				if ( isset( $this->types[ "$prefix:{$content['name']}" ] ) ) break;
-				$parent = is_array( $content['types'][0] )
-					?  $content['types'][0]['parent']
-					:  $content['types'][0];
+				// BMS 2020-12-16 This seems rubbish and causes a problem in PHP 8.0
+				//				  In earlier versions it results in a value or null
+				// $parent = is_array( $content['types'][0] )
+				//	?  $content['types'][0]['parent']
+				//	:  $content['types'][0];
+				$parent = isset( $content['types'][0]['parent'] )
+					? $content['types'][0]['parent']
+					: $content['types'][0] ?? null;
+
+				// BMS 2020-12-16 If the parent is an array then is will be a union type
+				//				  and one of the members could be numeric.  Assume for now
+				//				  that union types are not numeric.
+				if ( is_array( $parent ) ) $parent = null;
+
 				$this->types[ "$prefix:{$content['name']}" ] = array(
 					'parent' => $parent,
 					'name' => $content['name'],
@@ -1217,9 +1228,20 @@ class SchemaTypes
 				$name = $attribute['name'];
 				$this->attributes[ "$prefix:$name" ] = $attribute;
 				if ( isset( $this->types[ "$prefix:$name" ] ) ) break;
-				$parent = is_array( $attribute['types'][0] )
+				// BMS 2020-12-16 This seems rubbish and causes a problem in PHP 8.0
+				//				  In earlier versions it results in a value or null
+				// $parent = is_array( $content['types'][0] )
+				//	?  $attribute['types'][0]['parent']
+				//	:  $attribute['types'][0];
+				$parent = isset( $attribute['types'][0]['parent'] )
 					? $attribute['types'][0]['parent']
-					: $attribute['types'][0];
+					: $attribute['types'][0] ?? null;
+
+				// BMS 2020-12-16 If the parent is an array then is will be a union type
+				//				  and one of the members could be numeric.  Assume for now
+				//				  that union types are not numeric.
+				if ( is_array( $parent ) ) $parent = null;
+
 				$this->types[ "$prefix:$name" ] = array(
 					'parent' => $parent,
 					'name' => $name,
@@ -1264,7 +1286,7 @@ class SchemaTypes
 
 							if ( $group )
 							{
-								$content['elements'][ "$prefix:{$element['name']}" ] = $group;
+								$content['elements'][ "$prefix:{$group['name']}" ] = $group;
 							}
 
 							break;

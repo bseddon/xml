@@ -348,7 +348,7 @@ function initializeLog()
 		/**
 		 * Load the event_log handler implementation
 		 */
-		require_once "$logPath/log/error-log.php";
+		require_once "$logPath/Log/error_log.php";
 	}
 
 	$log = \Log::singleton( 'error_log', PEAR_LOG_TYPE_SYSTEM, 'xpath2_log',
