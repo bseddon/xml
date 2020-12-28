@@ -43,7 +43,7 @@ interface IComparer
 	 *              following table.Value Meaning Less than zero x is less than y. Zero x equals y.
 	 *              Greater than zero x is greater than y.
 	 *
-	 * @throws ArgumentException 	Neither x nor y implements the System.IComparable interface.-or- x and y are
+	 * @throws \Exception ArgumentException 	Neither x nor y implements the System.IComparable interface.-or- x and y are
 	 *    							of different types and neither one can handle comparisons with the other.
 	 */
 	function Compare( $x, $y );

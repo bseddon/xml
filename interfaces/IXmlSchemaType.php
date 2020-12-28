@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\interfaces;
 
+use lyquidity\xml\MS\XmlSchemaType;
+
 /**
  * This interface allows a class to declare that it supports the getSchemaType and getValue functions
  */

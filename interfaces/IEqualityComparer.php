@@ -40,7 +40,7 @@ interface IEqualityComparer
 	 * @param object $x The first object to compare.
 	 * @param object $y The second object to compare.
 	 * @return bool true if the specified objects are equal; otherwise, false.
-	 * @throws ArgumentException x and y are of different types and neither one can handle comparisons with the other.
+	 * @throws \Exception ArgumentException x and y are of different types and neither one can handle comparisons with the other.
 	 */
 	function Equals( $x, $y );
 	/**
@@ -48,7 +48,7 @@ interface IEqualityComparer
 	 *
 	 * @param obj The System.Object for which a hash code is to be returned.
 	 * @return int A hash code for the specified object.
-	 * @throws ArgumentNullException The type of obj is a reference type and obj is null.
+	 * @throws \Exception ArgumentNullException The type of obj is a reference type and obj is null.
 	 */
 	function GetHashCode( $obj);
 }

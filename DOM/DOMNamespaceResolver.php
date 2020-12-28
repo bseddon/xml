@@ -31,6 +31,7 @@
 namespace lyquidity\xml\DOM;
 
 use \lyquidity\xml\MS\IXmlNamespaceResolver;
+use lyquidity\xml\MS\XmlNamespaceScope;
 use \lyquidity\xml\exceptions\NotSupportedException;
 
 /**
@@ -57,7 +58,7 @@ trait DOMNamespaceResolver
 	 *
 	 * @param string $prefix The prefix whose namespace URI you want to resolve. To match the default namespace, pass Empty.
 	 *
-	 * @return	A string that contains the namespace URI assigned to the namespace prefix
+	 * @return	string A string that contains the namespace URI assigned to the namespace prefix
 	 *     		specified; null if no namespace URI is assigned to the prefix specified. The
 	 *     		string returned is atomized.
 	 */
@@ -72,7 +73,7 @@ trait DOMNamespaceResolver
 	 *
 	 * @param string $namespaceURI : The namespace URI to resolve for the prefix.
 	 *
-	 * @return	A string that contains the namespace prefix assigned to the namespace URI specified; otherwise,
+	 * @return	string A string that contains the namespace prefix assigned to the namespace URI specified; otherwise,
 	 * 			Empty if no prefix is assigned to the namespace URI specified. The string returned is atomized.
 	 */
 	public function LookupPrefix( $namespaceURI )

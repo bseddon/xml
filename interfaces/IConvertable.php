@@ -30,6 +30,11 @@
 
 namespace lyquidity\xml\interfaces;
 
+use lyquidity\XPath2\Proxy\UShortProxy;
+use lyquidity\XPath2\Value\DecimalValue;
+use lyquidity\xml\TypeCode;
+use lyquidity\XPath2\Value\DateTimeValue;
+
 /**
  * Defines methods that convert the value of the implementing reference or value
  * type to a common language runtime type that has an equivalent value.
@@ -57,7 +62,7 @@ interface IConvertable
 	 * the specified culture-specific formatting information.
 	 *
 	 * @param IFormatProvider $provider An interface implementation that supplies culture-specific formatting information.
-	 * @return char A Unicode character equivalent to the value of this instance.
+	 * @return string A Unicode character equivalent to the value of this instance.
 	 */
 	function ToChar( $provider );
 	/**
@@ -65,7 +70,7 @@ interface IConvertable
 	 * specified culture-specific formatting information.
 	 *
 	 * @param IFormatProvider $provider An interface implementation that supplies culture-specific formatting information.
-	 * @return DateTime A DateTime instance equivalent to the value of this instance.
+	 * @return DateTimeValue A DateTime instance equivalent to the value of this instance.
 	 */
 	 function ToDateTime( $provider );
 	/**
@@ -73,7 +78,7 @@ interface IConvertable
 	 * the specified culture-specific formatting information.
 	 *
 	 * @param IFormatProvider $provider An implementation that supplies culture-specific formatting information.
-	 * @return Decimal A Decimal number equivalent to the value of this instance.
+	 * @return DecimalValue A Decimal number equivalent to the value of this instance.
 	 */
 	function ToDecimal( $provider );
 	/**
@@ -89,7 +94,7 @@ interface IConvertable
 	 * using the specified culture-specific formatting information.
 	 *
 	 * @param IFormatProvider $provider An interface implementation that supplies culture-specific formatting information.
-	 * @return ushort An 16-bit unsigned integer equivalent to the value of this instance.
+	 * @return UShortProxy An 16-bit unsigned integer equivalent to the value of this instance.
 	 */
 	function ToInt( $provider );
 

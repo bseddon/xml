@@ -45,7 +45,7 @@ interface IComparable
 	 *				obj in the sort order. Zero This instance occurs in the same position in the
 	 *				sort order as obj. Greater than zero This instance follows obj in the sort order.
 	 *
-	 * @throws ArgumentException obj is not the same type as this instance.
+	 * @throws \Exception ArgumentException obj is not the same type as this instance.
 	 *
 	 */
 	function CompareTo( $obj );

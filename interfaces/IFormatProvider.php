@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\interfaces;
 
+use lyquidity\XPath2\lyquidity\Type;
+
 /**
  * Provides a mechanism for retrieving an object to control formatting.
  */

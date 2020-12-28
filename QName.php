@@ -183,7 +183,7 @@ class QName
 	/**
 	 * Returns true if the QName is valid
 	 *
-	 * @return unknown
+	 * @return bool
 	 */
 	public function isValid()
 	{
