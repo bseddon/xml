@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\xml\QName;
+
 /**
  *     Class for the identity constraints: key, keyref, and unique elements.
  */

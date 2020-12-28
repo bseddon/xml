@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\xml\QName;
+
 /**
  * Represents the union element for simple types from XML Schema as specified by
  * the World Wide Web Consortium (W3C). A union datatype can be used to specify
@@ -59,7 +61,7 @@ class XmlSchemaSimpleTypeUnion extends XmlSchemaSimpleTypeContent
 	/**
 	 * Gets the collection of base types.
 	 *
-	 * @var XmlSchemaObjectCollection $BaseTypes
+	 * @var array $BaseTypes
 	 *     The collection of simple type base values.
 	 */
 	public $BaseTypes;
@@ -68,7 +70,7 @@ class XmlSchemaSimpleTypeUnion extends XmlSchemaSimpleTypeContent
 	 * Gets or sets the array of qualified member names of built-in data types or simpleType
 	 * elements defined in this schema (or another schema indicated by the specified namespace).
 	 *
-	 * @var XmlQualifiedName[] $MemberTypes
+	 * @var QName[] $MemberTypes
 	 *     An array that consists of a list of members of built-in data types or simple types.
 	 */
 	public $MemberTypes = array();

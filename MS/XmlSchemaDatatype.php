@@ -30,6 +30,7 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\XPath2\lyquidity\Type;
 use \lyquidity\xml\exceptions\NotSupportedException;
 
 
@@ -88,7 +89,7 @@ abstract class XmlSchemaDatatype
 	 * @return mixed The converted input value.
 	 *
 	 * @throws
-	 *   ArgumentNullException the object or Type parameter is null.
+	 *   \Exception ArgumentNullException the object or Type parameter is null.
 	 *   InvalidCastException The type represented by the XmlSchemaDatatype does not support a conversion from type of the value specified to the type specified.
 	 */
 	public function ChangeType1( $value, $targetType )
@@ -113,7 +114,7 @@ abstract class XmlSchemaDatatype
 	 * @return object The converted input value.
 	 *
 	 * @throws
-	 *   ArgumentNullException Object or Type parameter is null.
+	 *   \Exception ArgumentNullException Object or Type parameter is null.
 	 *   InvalidCastException The type represented by the XmlSchemaDatatype does not support
 	 *     a conversion from type of the value specified to the type specified.
 	 */
@@ -147,7 +148,7 @@ abstract class XmlSchemaDatatype
 	 * @return object An object that can be cast safely to the type returned by the XmlSchemaDatatype.ValueType property.
 	 *
 	 * @throws
-	 *   XmlSchemaValidationException : The input value is not a valid instance of this W3C XML Schema type.
+	 *   \Exception XmlSchemaValidationException : The input value is not a valid instance of this W3C XML Schema type.
 	 *   ArgumentNullException : The value to parse cannot be null.
 	 */
 	public function ParseValue( $s, $nameTable, $nsmgr )

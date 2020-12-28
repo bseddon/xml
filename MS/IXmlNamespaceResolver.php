@@ -40,7 +40,7 @@ interface IXmlNamespaceResolver
 	 * @param XmlNamespaceScope $scope
 	 * @return array
 	 */
-	function getNamespacesInScope( $scope );
+	function getNamespacesInScope( $scope = XmlNamespaceScope::All );
 
 	/**
 	 * Get the namespace for a prefix

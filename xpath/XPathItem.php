@@ -30,6 +30,11 @@
 
 namespace lyquidity\xml\xpath;
 
+use lyquidity\XPath2\Value\Long;
+use lyquidity\XPath2\lyquidity\Type;
+use lyquidity\xml\MS\IXmlNamespaceResolver;
+use lyquidity\xml\MS\XmlSchemaType;
+
 /**
  * Interface allows a class to declare that is supports being an XPathItem
  */
@@ -61,7 +66,7 @@ interface XPathItem
 
 	/**
 	 * Returns the value coerced to a datetime
-	 * @return DateTime
+	 * @return \DateTime
 	 */
 	function getValueAsDateTime();
 
@@ -79,7 +84,7 @@ interface XPathItem
 
 	/**
 	 * Returns the value coerced to a long
-	 * @return long
+	 * @return Long
 	 */
 	function getValueAsLong();
 

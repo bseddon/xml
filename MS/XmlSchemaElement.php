@@ -185,7 +185,7 @@ class XmlSchemaElement extends XmlSchemaParticle
 	 * Gets or sets the name of a built-in data type defined in this schema or another
 	 * schema indicated by the specified namespace.
 	 *
-	 * @var XmlQualifiedName $SchemaTypeName
+	 * @var QName $SchemaTypeName
 	 * The name of the built-in data type.
 	 */
 	public $SchemaTypeName = null;
@@ -193,7 +193,7 @@ class XmlSchemaElement extends XmlSchemaParticle
 	/**
 	 * Gets or sets the name of an element that is being substituted by this element.
 	 *
-	 * @var XmlQualifiedName $SubstitutionGroup
+	 * @var QName $SubstitutionGroup
 	 * The qualified name of an element that is being substituted by this element.Optional.
 	 */
 	public $SubstitutionGroup = null;

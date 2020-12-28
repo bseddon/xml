@@ -55,7 +55,7 @@ class XmlSchemaComplexType extends XmlSchemaType
 	 * NOT USED
 	 * Gets the collection of attributes for the complex type.
 	 *
-	 * @var XmlSchemaObjectCollection $Attributes
+	 * @var array $Attributes
 	 * Contains XmlSchemaAttribute and XmlSchemaAttributeGroupRef classes.
 	 */
 	public $Attributes = null;
@@ -64,7 +64,7 @@ class XmlSchemaComplexType extends XmlSchemaType
 	 * NOT USED
 	 * Gets the collection of all the complied attributes of this complex type and its base types.
 	 *
-	 * @var XmlSchemaObjectTable $AttributeUses
+	 * @var array $AttributeUses
 	 * The collection of all the attributes from this complex type and its base types.
 	 * The post-compilation value of the AttributeUses property.
 	 */

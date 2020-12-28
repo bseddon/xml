@@ -66,7 +66,7 @@ class XmlSchemaSimpleTypeRestriction extends XmlSchemaSimpleTypeContent
 	/**
 	 * Gets or sets an Xml Schema facet.
 	 *
-	 * @var XmlSchemaObjectCollection $Facets
+	 * @var array $Facets
 	 *     One of the following facet classes: XmlSchemaLengthFacet,  XmlSchemaMinLengthFacet,
 	 *      XmlSchemaMaxLengthFacet,  XmlSchemaPatternFacet,
 	 *      XmlSchemaEnumerationFacet,  XmlSchemaMaxInclusiveFacet,

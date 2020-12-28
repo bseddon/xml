@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\xml\QName;
+
 /**
 // Represents the list element from XML Schema as specified by the World Wide Web
 // Consortium (W3C). This class can be used to define a simpleType element as a
@@ -67,7 +69,7 @@ class XmlSchemaSimpleTypeList extends XmlSchemaSimpleTypeContent
 	 * Gets or sets the name of a built-in data type or simpleType element defined in
 	 * this schema (or another schema indicated by the specified namespace).
 	 *
-	 * @var XmlQualifiedName $ItemTypeName
+	 * @var QName $ItemTypeName
 	 *     The type name of the simple type list.
 	 */
 	public $ItemTypeName;

@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\xml\QName;
+
 /**
  *     Represents the group element with ref attribute from the XML Schema as specified
  *     by the World Wide Web Consortium (W3C). This class is used within complex types
@@ -57,7 +59,7 @@ class XmlSchemaGroupRef extends XmlSchemaParticle
 	 * Gets or sets the name of a group defined in this schema (or another schema indicated
 	 * by the specified namespace).
 	 *
-	 * @var XmlQualifiedName $RefName
+	 * @var QName $RefName
 	 *     The name of a group defined in this schema.
 	 */
 	public $RefName;

@@ -30,6 +30,9 @@
 
 namespace lyquidity\XPath2;
 
+use lyquidity\xml\MS\IXmlNamespaceResolver;
+use lyquidity\xml\MS\XmlNamespaceManager;
+
 /**
  * Defines a set of core functions for an XPath expression evaluator
  */
@@ -43,7 +46,7 @@ abstract class XPathExpression
 
 	/**
 	 * Return type
-	 * @var XPathResultType
+	 * @var XPath2ResultType
 	 */
 	public $ReturnType;
 

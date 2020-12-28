@@ -31,6 +31,7 @@
 namespace lyquidity\xml\MS;
 
  use lyquidity\xml\QName;
+use lyquidity\xml\TypeCode;
 use lyquidity\xml\exceptions\NotSupportedException;
 
  /**
@@ -127,7 +128,7 @@ class XmlSchemaType extends XmlSchemaAnnotated
 	 * Returns an XmlSchemaComplexType that represents the built-in
 	 * complex type of the complex type specified.
 	 *
-	 * @param  $typeCode One of the XmlTypeCode values representing the complex type.
+	 * @param TypeCode $typeCode One of the XmlTypeCode values representing the complex type.
 	 *
 	 * @return XmlSchemaComplexType The type that represents the built-in complex type.
 	 */
@@ -142,9 +143,9 @@ class XmlSchemaType extends XmlSchemaAnnotated
 	 *
 	 * @param QName $qualifiedName The QName of the complex type.
 	 *
-	 * @return The XmlSchemaComplexType that represents the built-in complex type.
+	 * @return XmlSchemaComplexType The XmlSchemaComplexType that represents the built-in complex type.
 	 *
-	 * @throws ArgumentNullException The XmlQualifiedName parameter is null.
+	 * @throws \Exception ArgumentNullException The XmlQualifiedName parameter is null.
 	 */
 	public static function GetBuiltInComplexTypeByQName( $qualifiedName )
 	{
@@ -162,7 +163,7 @@ class XmlSchemaType extends XmlSchemaAnnotated
 	 *
 	 * @return XmlSchemaSimpleType that represents the built-in simple type.
 	 *
-	 * @throws ArgumentNullException The XmlQualifiedName parameter is null.
+	 * @throws \Exception ArgumentNullException The XmlQualifiedName parameter is null.
 	 */
 	public static function GetBuiltInSimpleTypeByQName( $qualifiedName )
 	{

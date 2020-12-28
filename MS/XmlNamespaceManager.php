@@ -59,7 +59,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 
 	/**
 	 * Create a constructor and fill it from a SimpleXMLElement if provided
-	 * @param SimpleXMLElement $namespaces
+	 * @param \SimpleXMLElement $namespaces
 	 */
 	public function __construct( $namespaces = null )
 	{
@@ -67,7 +67,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 
 		if ( is_null( $namespaces ) ) return;
 
-		if ( $namespaces instanceof SimpleXMLElement )
+		if ( $namespaces instanceof \SimpleXMLElement )
 		{
 			$this->namespaces = $namespaces->getDocNamespaces( true );
 

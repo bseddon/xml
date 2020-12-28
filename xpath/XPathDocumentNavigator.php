@@ -24,26 +24,13 @@
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+* along with this program.  If not, see <http: *www.gnu.org/licenses/>.
 *
 */
 
-namespace lyquidity\xml\MS;
+namespace lyquidity\xml\xpath;
 
-/**
- * An abstract class for System.Xml.Schema.XmlSchemaAll, System.Xml.Schema.XmlSchemaChoice or XmlSchemaSequence.
- */
-abstract class XmlSchemaGroupBase extends XmlSchemaParticle
-{
-	/**
-	 * Initializes a new instance of the System.Xml.Schema.XmlSchemaGroupBase class.
-	 */
-	public function __construct() {}
+class XPathDocumentNavigator
+{}
 
-	/**
-	 * This collection is used to add new elements to the compositor.
-	 *
-	 * @var array $Items An XmlSchemaObjectCollection.
-	 */
-	public $Items = array();
-}
+?>

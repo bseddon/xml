@@ -49,7 +49,7 @@ class TypeCode
 
 		if ( is_array( $value ) )
 		{
-			return TypeCode::assocArray;
+			return TypeCode::AssocArray;
 		}
 
 		if ( is_string( $value ) )
@@ -57,12 +57,12 @@ class TypeCode
 			return strlen( $value ) === 1 ? TypeCode::Char : TypeCode::String;
 		}
 
-		if ( $value instanceof DateTime )
+		if ( $value instanceof \DateTime )
 		{
 			return TypeCode::DateTime;
 		}
 
-		if ( $value instanceof DateTimeInterval )
+		if ( $value instanceof \DateInterval )
 		{
 			return TypeCode::DateTimeInterval;
 		}
@@ -189,11 +189,11 @@ class TypeCode
  */
 function TestTypeCode()
 {
-	$typeCode = TypeCode::getTypeCode( 1 );
-	$typeCode = TypeCode::getTypeCode( "a" );
-	$typeCode = TypeCode::getTypeCode( "1" );
-	$typeCode = TypeCode::getTypeCode( true );
-	$typeCode = TypeCode::getTypeCode( date('now') );
-	$date = new \DateTime();
-	$typeCode = TypeCode::getTypeCode( $date );
+	// $typeCode = TypeCode::getTypeCode( 1 );
+	// $typeCode = TypeCode::getTypeCode( "a" );
+	// $typeCode = TypeCode::getTypeCode( "1" );
+	// $typeCode = TypeCode::getTypeCode( true );
+	// $typeCode = TypeCode::getTypeCode( date('now') );
+	// $date = new \DateTime();
+	// $typeCode = TypeCode::getTypeCode( $date );
 }

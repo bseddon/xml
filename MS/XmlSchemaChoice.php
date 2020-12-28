@@ -47,7 +47,7 @@ class XmlSchemaChoice extends XmlSchemaGroupBase
 	 *     Gets the collection of the elements contained with the compositor (choice): XmlSchemaElement,
 	 *     XmlSchemaGroupRef, XmlSchemaChoice, XmlSchemaSequence, or XmlSchemaAny.
 	 *
-	 * @var XmlSchemaObjectCollection $Items
+	 * @var array $Items
 	 *     The collection of elements contained within XmlSchemaChoice.
 	 *     [XmlElement("group", typeof(XmlSchemaGroupRef))]
 	 *     [XmlElement("element", typeof(XmlSchemaElement))]

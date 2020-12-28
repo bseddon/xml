@@ -57,14 +57,14 @@ define( 'XML_NAMESPACE', "http://www.w3.org/XML/1998/namespace" );
  * @param array|string $name	Can be an array of prefix/namespace key/value pairs or it can be
  * 								the prefixed local name
  * @param bool $noPrefixIsNoNamespace  If no prefix is found then there will be no namespace if this is true
- * @param Exception $castException		In case there is a cast exception
- * @param Exception $prefixException	In case there is a prefix exception
- * @throws Exception
+ * @param \Exception $castException		In case there is a cast exception
+ * @param \Exception $prefixException	In case there is a prefix exception
+ * @throws \Exception
  * @return QName
  */
 function qname( $value, $name = null, $noPrefixIsNoNamespace = false, $castException = null, $prefixException = null )
 {
-	if ( $value instanceof SimpleXMLElement )
+	if ( $value instanceof \SimpleXMLElement )
 	{
 		if ( $name ) // name is prefixed name
 		{
@@ -74,10 +74,10 @@ function qname( $value, $name = null, $noPrefixIsNoNamespace = false, $castExcep
 		}
 		else
 		{
-			return new QName( value.prefix, value.namespaceURI, value.localName );
+			return new QName( $value['prefix'], $value['namespaceURI'], $value['localName'] );
 		}
 	}
-	else if ( $name instanceof SimpleXMLElement )
+	else if ( $name instanceof \SimpleXMLElement )
 	{
 		$element = $name;
 		$name = null;
@@ -284,10 +284,10 @@ function qnameClarkName( $clarkname )
  * Create a QName from a prefix:name pair.  Use the namespace associated
  * with $element to resolve the prefix (if there is one)
  *
- * @param SimpleXMLElement $element
+ * @param \SimpleXMLElement $element
  * @param string $prefixedName
- * @param Exception $prefixException
- * @throws Exceptio
+ * @param \Exception $prefixException
+ * @throws \Exception
  * @return NULL|QName
  */
 function qnameEltPfxName( $element, $prefixedName, $prefixException = null )
@@ -298,10 +298,8 @@ function qnameEltPfxName( $element, $prefixedName, $prefixException = null )
 		return null;
 	}
 
-	if ( ! $matches['prefix'] )
-	{
-		$prefix = null; // don't want '' but instead null if no prefix
-	}
+	$prefix = $matches['prefix'] ?? null;  // don't want '' but instead null if no prefix
+	$localName = $matches['loocalName'] ?? null;  // don't want '' but instead null if no prefix
 
 	$names = $element->getDocNamespaces();
 	$namespaceURI = $names[ $prefix ] ? $names[ $prefix ] : null;

@@ -30,11 +30,18 @@
 
 namespace lyquidity\xml\xpath;
 
+use lyquidity\XPath2\XPathExpression;
+use lyquidity\XPath2\DOM\XmlSchemaSet;
 use lyquidity\xml\interfaces\ICloneable;
+use lyquidity\xml\interfaces\IEqualityComparer;
 use lyquidity\xml\MS\IXmlNamespaceResolver;
+use lyquidity\xml\MS\IXmlSchemaInfo;
+use lyquidity\xml\MS\XmlNameTable;
+use lyquidity\xml\MS\XmlNamespaceScope;
 use lyquidity\xml\xpath\XPathItem;
 use lyquidity\xml\xpath\IXPathNavigable;
 use lyquidity\xml\exceptions\NotSupportedException;
+use lyquidity\xml\MS\XmlNodeOrder;
 
 /**
  * Provides a cursor model for navigating and editing XML data.
@@ -209,12 +216,12 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Creates a new child node at the end of the list of child nodes of the current
 	 * node using the XML data string specified.
 	 *
-	 * @param string|XmlReader|XPathNavigator $newChild  The XML data string for the new child node.
+	 * @param string|\XmlReader|XPathNavigator $newChild  The XML data string for the new child node.
 	 *
 	 * @return void
 	 *
 	 * @throws
-	 *   ArgumentNullException The XML data string parameter is null.
+	 *   \Exception The XML data string parameter is null.
 	 *   InvalidOperationException The current node the XPathNavigator is positioned on is not the root node or an element node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 *   XmlException The XML data string parameter is not well-formed.
@@ -238,7 +245,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return void
 	 *
 	 * @throws
-	 *   InvalidOperationException The current node the XPathNavigator is positioned on is not the root node or an element node.
+	 *   \Exception The current node the XPathNavigator is positioned on is not the root node or an element node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
 	public function AppendChildElement( $prefix, $localName, $namespaceURI, $value )
@@ -252,12 +259,12 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * the XML Schema definition language (XSD) schema provided.
 	 *
 	 * @param XmlSchemaSet $schemas The XmlSchemaSet containing the schemas used to validate the XML data contained in the XPathNavigator.
-	 * @param ValidationEventHandler $validationEventHandler The ValidationEventHandler that receives information about schema validation warnings and errors.
+	 * @param \Closure $validationEventHandler The ValidationEventHandler that receives information about schema validation warnings and errors.
 	 *
 	 * @return bool true if no schema validation errors occurred; otherwise, false.
 	 *
 	 * @throws
-	 *   XmlSchemaValidationException A schema validation error occurred, and no ValidationEventHandler was specified to handle validation errors.
+	 *   \Exception A schema validation error occurred, and no ValidationEventHandler was specified to handle validation errors.
 	 *   InvalidOperationException The XPathNavigator is positioned on a node that is not an element, attribute, or the root node or there is not type information to perform validation.
 	 *   ArgumentException The XPathNavigator.CheckValidity(XmlSchemaSet,ValidationEventHandler) method was called with an XmlSchemaSet parameter when the XPathNavigator was not positioned on the root node of the XML data.
 	 */
@@ -280,10 +287,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * position of the XPathNavigator specified.
 	 *
 	 * @param XPathNavigator $nav The XPathNavigator to compare against.
-	 * @param $useLineNo
+	 * @param bool $useLineNo (Default: false)
 	 * @return XmlNodeOrder An XmlNodeOrder value representing the comparative position of the two XPathNavigator objects.
 	 */
-	public function ComparePosition( $nav, $useLineNo )
+	public function ComparePosition( $nav, $useLineNo = false )
 	{
 		throw new NotSupportedException( "XPathNavigator::" );
 	}
@@ -297,7 +304,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return XPathExpression An XPathExpression object representing the XPath expression.
 	 *
 	 * @throws
-	 *   ArgumentException The xpath parameter contains an XPath expression that is not valid.
+	 *   \Exception The xpath parameter contains an XPath expression that is not valid.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function Compile( $xpath )
@@ -318,7 +325,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return void
 	 *
 	 * @throws
-	 *   InvalidOperationException The XPathNavigator is not positioned on an element node.
+	 *   \Exception The XPathNavigator is not positioned on an element node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
 	public function CreateAttribute( $prefix, $localName, $namespaceURI, $value )
@@ -330,10 +337,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Not used
 	 * Returns an XmlWriter object used to create new attributes on the current element.
 	 *
-	 * @return XmlWriter An XmlWriter object used to create new attributes on the current element.
+	 * @return \XmlWriter An XmlWriter object used to create new attributes on the current element.
 	 *
 	 * @throws
-	 *   InvalidOperationException The XPathNavigator is not positioned on an element node.
+	 *   \Exception The XPathNavigator is not positioned on an element node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
 	public function CreateAttributes()
@@ -361,7 +368,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return void
 	 *
 	 * @throws
-	 *   ArgumentNullException The XPathNavigator specified is null.
+	 *   \Exception The XPathNavigator specified is null.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 *   InvalidOperationException The last node to delete specified is not a valid sibling node of the current node.
 	 */
@@ -377,7 +384,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return void
 	 *
 	 * @throws
-	 *   InvalidOperationException The XPathNavigator is positioned on a node that cannot be deleted such as the root node or a namespace node.
+	 *   \Exception The XPathNavigator is positioned on a node that cannot be deleted such as the root node or a namespace node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
 	public function DeleteSelf()
@@ -395,7 +402,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *     				to Boolean, Double, string, or XPathNodeIterator objects respectively.
 	 *
 	 * @throws
-	 *   ArgumentException The return type of the XPath expression is a node set.
+	 *   \Exception The return type of the XPath expression is a node set.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function EvaluateXPath( $xpath )
@@ -413,7 +420,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *     			  to Boolean, Double, string, or XPathNodeIterator objects respectively.
 	 *
 	 * @throws
-	 *   ArgumentException The return type of the XPath expression is a node set.
+	 *   \Exception The return type of the XPath expression is a node set.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function EvaluateExpression( $expr )
@@ -433,7 +440,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *    			  to Boolean, Double, string, or XPathNodeIterator objects respectively.
 	 *
 	 * @throws
-	 *   ArgumentException The return type of the XPath expression is a node set.
+	 *   \Exception The return type of the XPath expression is a node set.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function EvaluateXPathWithResolver( $xpath, $resolver)
@@ -454,7 +461,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *     			  to Boolean, Double, string, or XPathNodeIterator objects respectively.
 	 *
 	 * @throws
-	 *   ArgumentException The return type of the XPath expression is a node set.
+	 *   \Exception The return type of the XPath expression is a node set.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function EvaluateExpressionWithResolver( $expr, $context )
@@ -502,7 +509,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @return array An array of namespace names keyed by prefix.
 	 */
-	public function GetNamespacesInScope( $scope )
+	public function GetNamespacesInScope( $scope = XmlNamespaceScope::All )
 	{
 		throw new NotSupportedException( "XPathNavigator::" );
 	}
@@ -512,10 +519,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Creates a new sibling node after the currently selected node using the XML contents
 	 * of the XmlReader object specified.
 	 *
-	 * @param null|XmlReader|XPathNavigator|string $newSibling  An XmlReader object positioned on the
+	 * @param null|\XmlReader|XPathNavigator|string $newSibling  An XmlReader object positioned on the
 	 * @return void
 	 * @throws
-	 *		ArgumentException The XmlReader object is in an error state or closed.
+	 *		\Exception The XmlReader object is in an error state or closed.
 	 *		ArgumentNullException The XmlReader object parameter is null.
 	 * 		InvalidOperationException The position of the XPathNavigator does not allow a new sibling node to be inserted after the current node.
 	 *		NotSupportedException The XPathNavigator does not support editing.
@@ -531,10 +538,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Creates a new sibling node before the currently selected node using the nodes
 	 * in the XPathNavigator specified.
 	 *
-	 * @param null|XPathNavigator|string|XmlReader $newSibling  An XPathNavigator object positioned on the node to add as the new sibling node.
+	 * @param null|XPathNavigator|string|\XmlReader $newSibling  An XPathNavigator object positioned on the node to add as the new sibling node.
 	 * @return void
 	 * @throws
-	 *   ArgumentNullException The XPathNavigator object parameter is null.
+	 *   \Exception The XPathNavigator object parameter is null.
 	 *   InvalidOperationException The position of the XPathNavigator does not allow a new sibling
 	 *     							node to be inserted before the current node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
@@ -577,7 +584,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *     						an empty element is created.
 	 *
 	 * @throws
-	 *   InvalidOperationException The position of the XPathNavigator does not allow a new sibling
+	 *   \Exception The position of the XPathNavigator does not allow a new sibling
 	 *     							node to be inserted before the current node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
@@ -591,7 +598,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Determines whether the specified XPathNavigator is a descendant
 	 * of the current XPathNavigator.
 	 *
-	 * @param \XPathNavigator $nav  The XPathNavigator to compare to this XPathNavigator.
+	 * @param XPathNavigator $nav  The XPathNavigator to compare to this XPathNavigator.
 	 *
 	 * @return bool true if the specified XPathNavigator is a descendant of the current XPathNavigator; otherwise, false.
 	 */
@@ -623,7 +630,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @param string $prefix The prefix whose namespace URI you want to resolve. To match the default namespace, pass Empty.
 	 *
-	 * @return	A string that contains the namespace URI assigned to the namespace prefix
+	 * @return	string A string that contains the namespace URI assigned to the namespace prefix
 	 *     		specified; null if no namespace URI is assigned to the prefix specified. The
 	 *     		string returned is atomized.
 	 */
@@ -638,7 +645,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @param string $namespaceURI  The namespace URI to resolve for the prefix.
 	 *
-	 * @return	A string that contains the namespace prefix assigned to the namespace URI specified; otherwise,
+	 * @return	string A string that contains the namespace prefix assigned to the namespace URI specified; otherwise,
 	 * 			Empty if no prefix is assigned to the namespace URI specified. The string returned is atomized.
 	 */
 	public function LookupPrefix( $namespaceURI )
@@ -655,7 +662,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return bool true if the current node matches the specified XPath expression; otherwise, false.
 	 *
 	 * @throws
-	 *   ArgumentException The XPath expression cannot be evaluated.
+	 *   \Exception The XPath expression cannot be evaluated.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function Matches( $xpath )
@@ -910,11 +917,11 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Creates a new child node at the beginning of the list of child nodes of the current
 	 * node using the XML contents of the XmlReader object specified.
 	 *
-	 * @param null|XmlReader|string|XPathNavigator $newChild :	An XmlReader object positioned on the XML
+	 * @param null|\XmlReader|string|XPathNavigator $newChild :	An XmlReader object positioned on the XML
 	 * 															data for the new child node.
 	 *
 	 * @throws
-	 *   ArgumentException The XmlReader object is in an error state or closed.
+	 *   \Exception The XmlReader object is in an error state or closed.
 	 *   ArgumentNullException The XmlReader object parameter is null.
 	 *   InvalidOperationException The current node the XPathNavigator is positioned on does not allow a new
 	 *   							child node to be prepended.
@@ -937,7 +944,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @param string $value  The value of the new child element. If Empty or null are passed, an empty element is created.
 	 *
 	 * @throws
-	 *   InvalidOperationException The current node the XPathNavigator is positioned on does not allow a new child node to be prepended.
+	 *   \Exception InvalidOperationException The current node the XPathNavigator is positioned on does not allow a new child node to be prepended.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
 	public function PrependChildElement( $prefix, $localName, $namespaceURI, $value )
@@ -949,10 +956,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Not used
 	 * Returns an XmlReader object that contains the current node and its child nodes.
 	 *
-	 * @return XmlReader An XmlReader object that contains the current node and its child nodes.
+	 * @return \XmlReader An XmlReader object that contains the current node and its child nodes.
 	 *
 	 * @throws
-	 *   InvalidOperationException The XPathNavigator is not positioned on an element node or the root node.
+	 *   \Exception InvalidOperationException The XPathNavigator is not positioned on an element node or the root node.
 	 */
 	public function ReadSubtree()
 	{
@@ -965,10 +972,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @param XPathNavigator $lastSiblingToReplace  An XPathNavigator positioned on the last sibling node in the range to replace.
 	 *
-	 * @return XmlWriter An XmlWriter object used to specify the replacement range.
+	 * @return \XmlWriter An XmlWriter object used to specify the replacement range.
 	 *
 	 * @throws
-	 *   ArgumentNullException The XPathNavigator specified is null.
+	 *   \Exception ArgumentNullException The XPathNavigator specified is null.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 *   InvalidOperationException The last node to replace specified is not a valid sibling node of the current node.
 	 */
@@ -981,10 +988,10 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Not used
 	 * Replaces the current node with the content of the string specified.
 	 *
-	 * @param string|XmlReader $newNode  The XML data string for the new node.
+	 * @param string|\XmlReader $newNode  The XML data string for the new node.
 	 *
 	 * @throws
-	 *   ArgumentNullException The XML string parameter is null.
+	 *   \Exception ArgumentNullException The XML string parameter is null.
 	 *   InvalidOperationException The XPathNavigator is not positioned on an element, text, processing instruction, or comment node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 *   XmlException  The XML string parameter is not well-formed.
@@ -1005,7 +1012,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @return XPathNodeIterator An XPathNodeIterator that points to the selected node set.
 	 *
 	 * @throws
-	 *   ArgumentException The XPath expression contains an error or its return type is not a node set.
+	 *   \Exception ArgumentException The XPath expression contains an error or its return type is not a node set.
 	 *   XPathException The XPath expression is not valid.
 	 */
 	public function Select( $xpath, $resolver)
@@ -1024,7 +1031,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @return XPathNodeIterator An XPathNodeIterator that contains the selected nodes. The returned nodes are in reverse document order.
 	 *
-	 * @throws  ArgumentNullException null cannot be passed as a parameter.
+	 * @throws  \Exception ArgumentNullException null cannot be passed as a parameter.
 	 */
 	public function SelectAncestors( $name, $namespaceURI, $matchSelf )
 	{
@@ -1041,7 +1048,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @return XPathNodeIterator An XPathNodeIterator that contains the selected nodes.
 	 *
-	 * @throws  ArgumentNullException null cannot be passed as a parameter.
+	 * @throws \Exception ArgumentNullException null cannot be passed as a parameter.
 	 */
 	public function SelectChildrenByName( $name, $namespaceURI )
 	{
@@ -1057,7 +1064,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 *
 	 * @return XPathNodeIterator An XPathNodeIterator that contains the selected nodes.
 	 *
-	 * @throws  ArgumentNullException null cannot be passed as a parameter.
+	 * @throws \Exception ArgumentNullException null cannot be passed as a parameter.
 	 */
 	public function SelectChildrenByType( $type )
 	{
@@ -1094,7 +1101,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * 							otherwise null if there are no query results.
 	 *
 	 * @throws
-	 *   ArgumentException An error was encountered in the XPath query or the return type of the XPath expression is not a node.
+	 *   \Exception ArgumentException An error was encountered in the XPath query or the return type of the XPath expression is not a node.
 	 *   XPathException The XPath query is not valid.
 	 */
 	public function SelectSingleNode( $expression, $resolver )
@@ -1109,7 +1116,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @param object $typedValue  The new typed value of the node.
 	 *
 	 * @throws
-	 *   ArgumentException The XPathNavigator does not support the type of the object specified.
+	 *   \Exception ArgumentException The XPathNavigator does not support the type of the object specified.
 	 *   ArgumentNullException The value specified cannot be null.
 	 *   InvalidOperationException The XPathNavigator is not positioned on an element or attribute node.
 	 *   NotSupportedException The XPathNavigator does not support editing.
@@ -1126,7 +1133,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * @param string $value  The new value of the node.
 	 *
 	 * @throws
-	 *   ArgumentNullException The value parameter is null.
+	 *   \Exception ArgumentNullException The value parameter is null.
 	 *   InvalidOperationException The XPathNavigator is positioned on the root node, a namespace node, or the specified value is invalid.
 	 *   NotSupportedException The XPathNavigator does not support editing.
 	 */
@@ -1151,7 +1158,7 @@ abstract class XPathNavigator implements XPathItem, ICloneable, IXPathNavigable,
 	 * Streams the current node and its child nodes to the XmlWriter object
 	 * specified.
 	 *
-	 * @param XmlWriter $writer  The XmlWriter object to stream to.
+	 * @param \XmlWriter $writer  The XmlWriter object to stream to.
 	 */
 	public function WriteSubtree( $writer )
 	{

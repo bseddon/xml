@@ -50,7 +50,7 @@ class XmlSchemaAnnotation extends XmlSchemaObject
 	/**
 	 * Gets the Items collection that is used to store the appinfo and documentation child elements.
 	 *
-	 * @var XmlSchemaObjectCollection $Items
+	 * @var array $Items
 	 *     An System.Xml.Schema.XmlSchemaObjectCollection of appinfo and documentation child elements.
 	 */
 	public $Items = null;

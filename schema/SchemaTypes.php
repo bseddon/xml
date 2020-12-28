@@ -25,7 +25,6 @@ namespace lyquidity\xml\schema;
 
 require_once 'SchemaException.php';
 
-use lyquidity\Log;
 use lyquidity\xml\QName;
 
 require_once __DIR__ . "/../functions.php";
@@ -66,7 +65,7 @@ class SchemaTypes
 	/**
 	 * A reference to this singleton instance
 	 *
-	 * @var Singleton
+	 * @var SchemaTypes Singleton
 	 */
 	private static $instance;
 
@@ -365,7 +364,7 @@ class SchemaTypes
 
 	/**
 	 * Get an instance of the types singleton
-	 * @param Function $instance (optional) A potentially descendant instance to use
+	 * @param SchemaTypes $instance (optional) A potentially descendant instance to use
 	 * @return SchemaTypes
 	 */
 	public static function &getInstance( $instance = null )
@@ -869,8 +868,8 @@ class SchemaTypes
 	 * Returns an array representing either a simple or complex element type
 	 * THIS FUNCTION SHOULD ONLY BE USED TO PROCESS GLOBAL OR TOP LEVEL NODES
 	 *
-	 * @param SimpleXMLElement $node The node to process
-	 * @param $nodeKey The local name of the node
+	 * @param \SimpleXMLElement $node The node to process
+	 * @param string $nodeKey The local name of the node
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @param bool $includeElements
 	 * @return boolean
@@ -961,7 +960,7 @@ class SchemaTypes
 				// Merge groups in the same named attributes group together
 				if ( isset( $this->attributeGroups[ "$prefix:$groupName" ] ) )
 				{
-					$this->attributeGroups[ "$prefix:$groupName" ] = $attributeGroups[ "$prefix:$groupName" ] + $group;
+					$this->attributeGroups[ "$prefix:$groupName" ] = $this->attributeGroups[ "$prefix:$groupName" ] + $group;
 				}
 				else
 				{
@@ -1046,7 +1045,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing either a simple or complex element type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -1074,7 +1073,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing either a simple or complex element type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -1127,8 +1126,8 @@ class SchemaTypes
 	/**
 	 * Returns an array representing a complex content of a complex type
 	 *
-	 * @param SimpleXMLElement $contentNode The node to process
-	 * @param string $prefix The prefix associated with the namespace of the containing schema
+	 * @param \SimpleXMLElement $contentNode The node to process
+	 * @param string $pre	fix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
 	private function getNodeContent( $contentNode, $prefix )
@@ -1182,7 +1181,7 @@ class SchemaTypes
 	 * Read the content of a schema element
 	 *
 	 * @param string $key The local name of the element
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -1330,7 +1329,7 @@ class SchemaTypes
 						$typeName = strpos( $typeName, ":" ) ? $typeName : "xs:$typeName";
 						return isset( $localTypes[ $typeName ] )
 							? $typeName
-							: $false;
+							: false;
 					}, array_filter( explode( " ", $memberTypes ) ) );
 
 					$content['types'] = array_filter( $memberTypes );
@@ -1672,7 +1671,7 @@ class SchemaTypes
 
 	/**
 	 * Return the schema type for the DOMNode or false
-	 * @param DOMNode $node
+	 * @param \DOMNode $node
 	 * @return string|false A string representing the type associated with $node or false if one cannot be located
 	 * @throws SchemaException Thrown for nodes types that are no supported
 	 */
@@ -1686,7 +1685,7 @@ class SchemaTypes
 				// Get the default namespace for the DOMNode
 				$doc = $node->ownerDocument;
 				/**
-				 * @var DOMNode $firstChild
+				 * @var \DOMNode $firstChild
 				 */
 				$firstChild = $doc->documentElement;
 				$ns = $firstChild->getAttributeNode('xmlns')
@@ -1704,7 +1703,7 @@ class SchemaTypes
 		}
 
 		$prefix = $this->getPrefixForNamespace( $ns );
-		$types;
+		$types = array();
 
 		if ( is_a( $node, "DOMElement" ) )
 		{
@@ -1772,7 +1771,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing a group type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -1850,7 +1849,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing an element type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @param bool $global A flag indicating whether this node is a top level or global element
 	 * @return boolean|array
@@ -2001,7 +2000,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing a simple type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -2093,7 +2092,7 @@ class SchemaTypes
 	/**
 	 * Returns an array representing a simple type
 	 *
-	 * @param SimpleXMLElement $node The node to process
+	 * @param \SimpleXMLElement $node The node to process
 	 * @param string $prefix The prefix associated with the namespace of the containing schema
 	 * @return boolean|array
 	 */
@@ -2107,7 +2106,7 @@ class SchemaTypes
 
 	/**
 	 * Return the enumeration values associated with the node or false
-	 * @param SimpleXMLElement $node
+	 * @param \SimpleXMLElement $node
 	 * @return boolean|array
 	 */
 	function getEnumeration( $node )
@@ -2179,8 +2178,8 @@ class SchemaTypes
 
 		if ( json_last_error() !== JSON_ERROR_NONE )
 		{
-			$message = sprintf( "Error parsing JSON %s", XBRL::json_last_error_msg() );
-			XBRL_Log::getInstance()->err( $message );
+			$message = sprintf( "Error parsing JSON %s", \XBRL::json_last_error_msg() );
+			\XBRL_Log::getInstance()->err( $message );
 			return false;
 		}
 
@@ -2261,7 +2260,7 @@ class SchemaTypes
 		if ( json_last_error() == JSON_ERROR_NONE )
 			return $json;
 
-			XBRL_Log::getInstance()->err( "Failed to generate JSON for types" );
+			\XBRL_Log::getInstance()->err( "Failed to generate JSON for types" );
 
 			return false;
 	}

@@ -30,6 +30,8 @@
 
 namespace lyquidity\xml\MS;
 
+use lyquidity\xml\QName;
+
 /**
  * Represents the keyref element from XML Schema as specified by the World Wide Web Consortium (W3C).
  */

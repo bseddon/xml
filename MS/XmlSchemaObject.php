@@ -58,7 +58,7 @@ abstract class XmlSchemaObject
 	/**
 	 * Gets or sets the System.Xml.Serialization.XmlSerializerNamespaces to use with this schema object.
 	 *
-	 * @var XmlSerializerNamespaces $Namespaces The System.Xml.Serialization.XmlSerializerNamespaces
+	 * @var array $Namespaces The System.Xml.Serialization.XmlSerializerNamespaces
 	 * 											property for the schema object.
 	 */
 	public $Namespaces;

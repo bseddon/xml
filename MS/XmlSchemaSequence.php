@@ -47,7 +47,7 @@ class XmlSchemaSequence extends XmlSchemaGroupBase
 	 * System.Xml.Schema.XmlSchemaGroupRef, System.Xml.Schema.XmlSchemaChoice, System.Xml.Schema.XmlSchemaSequence,
 	 * or System.Xml.Schema.XmlSchemaAny.
 	 *
-	 * @var XmlSchemaObjectCollection $Items
+	 * @var array $Items
 	 *     The elements contained within the compositor.
 	 *     [XmlElement("any", typeof(XmlSchemaAny))]
 	 *     [XmlElement("element", typeof(XmlSchemaElement))]
