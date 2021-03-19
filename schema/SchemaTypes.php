@@ -1685,7 +1685,7 @@ class SchemaTypes
 				// Get the default namespace for the DOMNode
 				$doc = $node->ownerDocument;
 				/**
-				 * @var \DOMNode $firstChild
+				 * @var \DOMElement $firstChild
 				 */
 				$firstChild = $doc->documentElement;
 				$ns = $firstChild->getAttributeNode('xmlns')
